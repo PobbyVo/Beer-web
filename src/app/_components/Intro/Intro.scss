@@ -1,0 +1,217 @@
+@import "@/styles/core/mixin.scss";
+
+@keyframes rotateLeft {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(-360deg);
+	}
+}
+@keyframes fadeInUp {
+	0% {
+		transform: translateY(-75%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+@keyframes fadeInDown {
+	0% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+.intro {
+	position: relative;
+	// z-index: 2;
+	width: 100%;
+	pointer-events: none;
+	padding-top: 15rem;
+	.intro-titleWrapper {
+		position: relative;
+	}
+	.model .blur-model {
+		position: absolute;
+		width: 200%;
+		height: 200%;
+		top: 80%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: -1;
+	}
+	.titleWrapper {
+		display: block;
+		text-align: center;
+		margin: 0 auto;
+	}
+	.hugeTitle {
+		text-transform: uppercase;
+		font-weight: 400;
+		font-family: "UTM Aircona";
+		.txt {
+			display: block;
+			line-height: 1;
+			margin-top: -3%;
+			white-space: nowrap;
+			// overflow: hidden;
+			transition: all 0.2s linear;
+			opacity: 0;
+			&:nth-child(1) {
+				font-size: 15.2vw;
+				color: var(--updateColor);
+				-webkit-text-stroke-width: 2;
+				-webkit-text-stroke-color: var(--updateColor);
+				position: relative;
+				z-index: 0;
+			}
+			&:nth-child(2) {
+				color: #fff2ca;
+				font-size: 11vw;
+				position: relative;
+				z-index: 3;
+				margin-top: -5rem;
+			}
+		}
+		.char {
+			position: relative;
+			z-index: 3;
+			opacity: 0;
+			// transform: translateY(-75%);
+		}
+	}
+	.titleWrapper-bt {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		width: 100%;
+		margin-top: 24rem;
+	}
+	.title-desc {
+		color: #fff2ca;
+		font-family: "UTM Aircona";
+		font-size: 24px;
+		font-weight: 400;
+		transition: all 0.2s linear;
+		opacity: 0;
+		// overflow: hidden;
+	}
+	&.active {
+		.hugeTitle {
+			.txt {
+				opacity: 1;
+				&:nth-child(2) {
+					opacity: 0;
+				}
+				.char {
+					animation: fadeInUp 1s ease-in-out forwards;
+				}
+			}
+		}
+
+		.title-desc {
+			animation: fadeInDown 1s ease-in-out forwards;
+		}
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.intro {
+		height: 100vh;
+	}
+	.intro .intro-titleWrapper {
+		position: absolute;
+		left: 50%;
+		top: 4%;
+		transform: translate(-50%, 0);
+	}
+	.intro .titleWrapper-bt {
+		margin-top: 10rem;
+	}
+}
+@media screen and (max-width: 850px) {
+	.intro {
+		padding-top: 10rem;
+	}
+	.intro .hugeTitle .txt:nth-child(2) {
+		margin-top: -2rem;
+	}
+}
+@media screen and (max-width: 576px) {
+	.intro {
+		padding-top: 6rem;
+	}
+	.intro .titleWrapper-bt {
+		margin-top: 4rem;
+	}
+	.intro .title-desc {
+		font-size: 1.8rem;
+	}
+}
+
+// body.active-glb-pale-ale {
+// 	// background-color: #f5e8c7; /*lon den */
+// 	.intro .hugeTitle .txt:nth-child(1) {
+// 		color: #fec417;
+// 		-webkit-text-stroke-width: 2;
+// 		-webkit-text-stroke-color: #fec417;
+// 	}
+// 	.intro .title-desc {
+// 		color: #fec417;
+// 	}
+// }
+
+// body.active-glb-ale-stout {
+// 	// background-color: #3e2723; /* lon xanh chuoi */
+// 	.intro .hugeTitle .txt:nth-child(1) {
+// 		color: #20be00;
+// 		-webkit-text-stroke-width: 2;
+// 		-webkit-text-stroke-color: #20be00;
+// 	}
+// }
+
+// body.active-glb-belgian-white {
+// 	// background-color: #f2e2ba; /* đỏ */
+// 	.intro .hugeTitle .txt:nth-child(1) {
+// 		color: #ff2b00;
+// 		-webkit-text-stroke-width: 2;
+// 		-webkit-text-stroke-color: #ff2b00;
+// 	}
+// }
+
+// body.active-glb-ipa {
+// 	// background-color: #ffcc80; /* blur */
+// 	.intro .hugeTitle .txt:nth-child(1) {
+// 		color: #0067ee;
+// 		-webkit-text-stroke-width: 2;
+// 		-webkit-text-stroke-color: #0067ee;
+// 	}
+// }
+
+@include max(1200px) {
+	.intro .titleWrapper-bt {
+		margin-top: 3.2rem;
+	}
+	.beerinfo-dotfly {
+		width: max-content;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		height: 140%;
+	}
+	.intro {
+		&.active {
+			.hugeTitle .txt:nth-child(2) {
+				opacity: 1;
+			}
+		}
+	}
+	.beercontainer-wrap .beer-title-custom .hugeTitle {
+		display: none;
+	}
+}

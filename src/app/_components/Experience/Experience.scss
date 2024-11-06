@@ -1,0 +1,166 @@
+.experience {
+	position: relative;
+	width: 100%;
+	padding: 12rem 0 0;
+	font-family: "UTM Aircona";
+	color: #fec417;
+	background: #0c0605;
+	z-index: 20;
+
+	.experience-header {
+		position: relative;
+		overflow: hidden;
+	}
+	.experience-header-mask {
+		position: relative;
+		transform-origin: top left;
+		will-change: transform;
+		transform: translate(0, 100%);
+		visibility: hidden;
+	}
+
+	.experience-title {
+		font-size: 10rem;
+		letter-spacing: -2px;
+		text-transform: uppercase;
+		line-height: 0.8;
+		margin-bottom: 0.8rem;
+	}
+
+	.experience-desc {
+		font-family: "Exo 2";
+		font-size: 2.4rem;
+		font-weight: 600;
+		letter-spacing: -0.48px;
+	}
+
+	.clip {
+		height: 300vh;
+		width: calc(100vw - 0.8rem);
+		left: 50%;
+		transform: translateX(-50%);
+		position: relative;
+	}
+
+	.clip .video {
+		background-color: #000;
+		clip-path: ellipse(35vh 35vh at 50% 50%);
+		height: 100vh;
+		position: sticky;
+		top: 0;
+		width: calc(100vw - 0.8rem);
+		will-change: transform;
+		overflow: hidden;
+	}
+
+	.video__player {
+		left: 0;
+		overflow: hidden;
+		pointer-events: none;
+		top: 0;
+		display: grid;
+		height: 100%;
+		margin: 0 auto;
+		place-items: center;
+		position: absolute;
+		width: 100%;
+	}
+	video {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+body.active-glb-pale-ale {
+	.experience {
+		color: #fec417;
+	}
+}
+
+body.active-glb-ale-stout {
+	.experience {
+		color: #20be00;
+	}
+}
+
+body.active-glb-belgian-white {
+	.experience {
+		color: #ff2b00;
+	}
+}
+
+body.active-glb-ipa {
+	.experience {
+		color: #2785ff;
+	}
+}
+
+@media only screen and (max-width: 1726px) {
+	.experience .experience-title {
+		font-size: 8rem;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	.experience {
+		padding-top: 8rem;
+	}
+
+	.experience .experience-header {
+		margin-bottom: 2.4rem;
+	}
+	.experience .experience-header-mask {
+		transform: unset;
+		visibility: inherit;
+	}
+	.experience .experience-title {
+		font-size: 6.4rem;
+	}
+	.experience .experience-desc {
+		font-size: 2rem;
+	}
+	.experience .clip {
+		height: auto;
+		left: inherit;
+		transform: inherit;
+		width: 100%;
+	}
+	.experience .clip .video {
+		position: relative;
+		top: inherit;
+		width: 100%;
+		height: auto;
+		clip-path: unset;
+		padding-bottom: calc(100% * (1117 / 1728));
+		video {
+			height: 100%;
+			left: 50%;
+			object-fit: cover;
+			pointer-events: none;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+			z-index: 0;
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.experience .experience-title {
+		font-size: 5.6rem;
+	}
+}
+
+@media only screen and (max-width: 576px) {
+	.experience {
+		padding-top: 4rem;
+	}
+	.experience .experience-title {
+		font-size: 3.2rem;
+		letter-spacing: inherit;
+	}
+	.experience .experience-desc {
+		font-size: 1.8rem;
+	}
+}

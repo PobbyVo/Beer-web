@@ -1,0 +1,221 @@
+@import "@/styles/core/mixin.scss";
+
+@keyframes labelAnim {
+	0%,
+	100% {
+		transform: translate3d(-50%, -50%, 0);
+		opacity: 1;
+	}
+	40% {
+		transform: translate3d(-50%, -50%, 0);
+		opacity: 1;
+	}
+	50% {
+		transform: translate3d(calc(-50% + 1.875vw), -50%, 0);
+		opacity: 1;
+	}
+	50.1% {
+		transform: translate3d(calc(-50% + 1.875vw), -50%, 0);
+		opacity: 0;
+	}
+	50.2% {
+		transform: translate3d(calc(-50% - 1.875vw), -50%, 0);
+		opacity: 0;
+	}
+	50.3% {
+		transform: translate3d(calc(-50% - 1.875vw), -50%, 0);
+		opacity: 1;
+	}
+	60% {
+		transform: translate3d(-50%, -50%, 0);
+		opacity: 1;
+	}
+}
+@keyframes switchHoverAnim {
+	0%,
+	100% {
+		transform: translate3d(0, 0, 0);
+	}
+	10% {
+		transform: translate3d(1px, 1px, 0);
+	}
+	20% {
+		transform: translate3d(-1px, -1px, 0);
+	}
+	30% {
+		transform: translate3d(1px, 1px, 0);
+	}
+	40% {
+		transform: translate3d(1px, -1px, 0);
+	}
+	50% {
+		transform: translate3d(1px, 1px, 0);
+	}
+	60% {
+		transform: translate3d(-1px, 1px, 0);
+	}
+	70% {
+		transform: translate3d(-1px, -1px, 0);
+	}
+	80% {
+		transform: translate3d(1px, -1px, 0);
+	}
+	90% {
+		transform: translate3d(1px, 0, 0);
+	}
+}
+.switchCan {
+	height: auto;
+	position: fixed;
+	top: 50%;
+	width: 2.375vw;
+	transform: translate3d(0, -50%, 0);
+	z-index: 100;
+	cursor: pointer;
+	transition: opacity 0.3s, transform 0.3s, pointer-events 0.3s, bottom 0.3s;
+	opacity: 1;
+	left: 95.875vw;
+}
+
+.switchCan .setbackground {
+	height: 12.5vw;
+	left: -1.875vw;
+	position: absolute;
+	top: 50%;
+	width: 12.5vw;
+	transform: translateY(-50%);
+	border-radius: 50%;
+	transition: all 0.2s linear;
+	background: #fec417;
+}
+.switchCan:hover .setbackground {
+	left: -2.5vw;
+}
+.switchCan:hover .canWrapper .innerCanWrapper {
+	animation: switchHoverAnim 0.8s infinite;
+}
+.switchCan .canWrapper {
+	position: relative;
+	width: 1.5625vw;
+	margin: 0 auto;
+	margin-bottom: 0;
+	transform: translateY(0);
+	transition: transform 0.3s 0s ease-out;
+	.label {
+		overflow: hidden;
+		height: 0.9375vw;
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		width: 1.5625vw;
+		transform: translate(-50%, -50%);
+	}
+	.label svg {
+		display: block;
+		height: 0.9375vw;
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		width: 0.9375vw;
+		transform: translate(-50%, -50%);
+		animation: labelAnim 4s infinite;
+	}
+	svg {
+		display: block;
+		width: 100%;
+		height: auto;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.switchCan svg path,
+.switchCan svg rect,
+.switchCan svg polygon,
+.switchCan svg ellipse {
+	fill: #fff;
+	transition: fill 0.3s 0s ease-out;
+}
+
+@include max(1200px) {
+	.switchCan .canWrapper {
+		width: 2.5625vw;
+	}
+	// .switchCan {
+	//     height: auto;
+	//     left: 50%;
+	//     position: fixed;
+	//     top: auto;
+	//     width: 23.148vw;
+	//     bottom: 0;
+	//     transform: translateX(-50%);
+	// }
+	// .switchCan .setbackground {
+	//     height: 33.333vw;
+	//     left: 50%;
+	//     position: absolute;
+	//     top: 0;
+	//     width: 33.333vw;
+	//     border-radius: 50%;
+	//     transition: background 0.3s 0s ease-out;
+	// }
+	// .switchCan .canWrapper {
+	//     width: 4.167vw;
+	//     padding: 1.852vw 0;
+	// }
+	// .switchCan:hover .setbackground {
+	//     left: 50%;
+	// }
+	// .switchCan .rotate {
+	//     display: none;
+	// }
+	// .switchCan .canWrapper .label {
+	//     height: 3.241vw;
+	//     left: 50%;
+	//     position: absolute;
+	//     top: 50%;
+	//     width: 3.241vw;
+	// }
+	// .switchCan .canWrapper .label svg {
+	//     height: 3.241vw;
+	//     left: 50%;
+	//     position: absolute;
+	//     top: 50%;
+	//     width: 2.315vw;
+	// }
+}
+
+@include max(576px) {
+	.innerCanWrapper {
+		transform: translate(15%, 25%);
+	}
+}
+
+body.active-glb-pale-ale {
+	.switchCan .setbackground {
+		background: #fec417;
+	}
+	.switchCan svg path,
+	.switchCan svg rect,
+	.switchCan svg polygon,
+	.switchCan svg ellipse {
+		fill: #1d1d1d;
+	}
+}
+
+body.active-glb-ale-stout {
+	.switchCan .setbackground {
+		background: #20be00;
+	}
+}
+
+body.active-glb-belgian-white {
+	.switchCan .setbackground {
+		background: #ff2b00;
+	}
+}
+
+body.active-glb-ipa {
+	.switchCan .setbackground {
+		background: #0067ee;
+	}
+}

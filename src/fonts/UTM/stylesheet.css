@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'UTM Aircona';
+    src: url('UTMAircona.eot');
+    src: url('UTMAircona.eot?#iefix') format('embedded-opentype'),
+        url('UTMAircona.woff2') format('woff2'),
+        url('UTMAircona.woff') format('woff'),
+        url('UTMAircona.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

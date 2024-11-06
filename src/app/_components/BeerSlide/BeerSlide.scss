@@ -1,0 +1,359 @@
+@import "@/styles/core/mixin.scss";
+
+.beerslide {
+	position: relative;
+	z-index: 1;
+	font-family: "UTM Aircona";
+	// padding-bottom: calc(100% * (835/1728));
+	padding-bottom: calc(100% * (1117 / 1728));
+	background: #0c0b05;
+}
+.beerslide-wrap-inner {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	transform: translateY(-50%);
+	height: 100%;
+	left: 0;
+}
+.beerslide-wrap {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+	overflow: hidden;
+}
+.beerslider-content {
+	position: absolute;
+	text-transform: uppercase;
+	line-height: 0.8;
+	padding-bottom: calc(100% * (198 / 471));
+	overflow: hidden;
+	width: calc(100% * (4.5 / 12));
+	// opacity: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	transition: transform 0.5s ease-in-out;
+	.slide {
+		position: absolute;
+		top: 30%;
+		left: 0;
+		width: 100%;
+		pointer-events: none;
+		opacity: 0;
+		transition: margin-left 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1),
+			opacity 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1), pointer-events 0.3s 0s;
+		&.active {
+			opacity: 1;
+			margin-left: 0;
+			pointer-events: inherit;
+			&.next {
+				margin-left: -1.25vw;
+				opacity: 0;
+				pointer-events: none;
+				transition: margin-left 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1),
+					opacity 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1), pointer-events 0.3s 0s;
+			}
+			&.prev {
+				margin-left: 1.25vw;
+				opacity: 0;
+				pointer-events: none;
+				transition: margin-left 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1),
+					opacity 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1), pointer-events 0.3s 0s;
+			}
+		}
+		&.animNext {
+			opacity: 0;
+			pointer-events: none;
+			margin-left: 1.25vw;
+		}
+		&.animPrev {
+			opacity: 0;
+			pointer-events: none;
+			margin-left: -1.25vw;
+		}
+	}
+
+	.beerslider-tt {
+		font-size: 8rem;
+		margin-bottom: 2.4rem;
+		line-height: 0.8;
+	}
+
+	.beerslider-desc {
+		color: #fff2ca;
+		font-size: 3.2rem;
+		line-height: 0.8;
+		width: calc(100% * (3.5 / 4.5));
+	}
+}
+
+.beerslider-navigator {
+	color: #fec417;
+	text-align: center;
+	width: calc(100% * (4 / 12));
+	margin: 0 auto;
+	position: absolute;
+	bottom: 12rem;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 3;
+
+	.navigatorWrapper {
+		height: 4rem;
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1.6rem;
+		width: 100%;
+	}
+	.slideItems {
+		position: relative;
+		height: 4rem;
+		flex: 1;
+	}
+	.slide {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -63%);
+		pointer-events: none;
+		opacity: 0;
+		transition: margin-left 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1),
+			opacity 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1), pointer-events 0.3s 0s;
+		width: 100%;
+		&.active {
+			opacity: 1;
+			margin-left: 0;
+			pointer-events: inherit;
+			&.next {
+				margin-left: -4vw;
+				opacity: 0;
+				pointer-events: none;
+				transition: margin-left 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1),
+					opacity 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1), pointer-events 0.3s 0s;
+			}
+			&.prev {
+				margin-left: 4vw;
+				opacity: 0;
+				pointer-events: none;
+				transition: margin-left 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1),
+					opacity 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1), pointer-events 0.3s 0s;
+			}
+		}
+		&.animNext {
+			opacity: 0;
+			pointer-events: none;
+			margin-left: 4vw;
+		}
+		&.animPrev {
+			opacity: 0;
+			pointer-events: none;
+			margin-left: -4vw;
+		}
+	}
+	.sliderButton {
+		height: 4rem;
+		width: 4rem;
+		cursor: pointer;
+		background: unset;
+		border: unset;
+		img {
+			display: none;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.item {
+		font-size: 3.6rem;
+		text-transform: uppercase;
+		line-height: 0.8;
+	}
+}
+
+.beerslide-dotfly,
+.beerslide-mountain,
+.beerslide-blur {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+.beerslide-dotfly {
+	width: 100%;
+	height: 100%;
+}
+.beerslide-mountain {
+	opacity: 0.8;
+	mix-blend-mode: screen;
+	width: 100%;
+	height: 100%;
+}
+.beerslide-blur {
+	width: calc(100% * (10 / 12));
+	img {
+		display: none;
+	}
+}
+
+body.active-glb-pale-ale {
+	.beerslide .beerslider-tt {
+		color: #fec417;
+	}
+	.beerslider-navigator {
+		color: #fec417;
+	}
+	.sliderButton {
+		img.yellow {
+			display: block;
+		}
+	}
+	.beerslide-blur {
+		img.yellow {
+			display: block;
+		}
+	}
+}
+
+body.active-glb-ale-stout {
+	.beerslide .beerslider-tt {
+		color: #20be00;
+	}
+	.beerslider-navigator {
+		color: #20be00;
+	}
+	.sliderButton {
+		img.green {
+			display: block;
+		}
+	}
+	.beerslide-blur {
+		img.green {
+			display: block;
+		}
+	}
+}
+
+body.active-glb-belgian-white {
+	.beerslide .beerslider-tt {
+		color: #ff2b00;
+	}
+	.beerslider-navigator {
+		color: #ff2b00;
+	}
+	.sliderButton {
+		img.red {
+			display: block;
+		}
+	}
+	.beerslide-blur {
+		img.red {
+			display: block;
+		}
+	}
+}
+
+body.active-glb-ipa {
+	.beerslide .beerslider-tt {
+		color: #2785ff;
+	}
+	.beerslider-navigator {
+		color: #2785ff;
+	}
+	.sliderButton {
+		img.blue {
+			display: block;
+		}
+	}
+
+	.beerslide-blur {
+		img.blue {
+			display: block;
+		}
+	}
+}
+
+@include max(1200px) {
+	.beerslider-content {
+		.beerslider-tt {
+			font-size: 6rem;
+		}
+	}
+	.beerslider-desc {
+		display: none;
+	}
+	.beerslide .beerslider-navigator {
+		position: absolute;
+		width: 90%;
+		top: 50%;
+		bottom: unset;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.beerslide .beerslider-navigator .slideItems {
+		display: none;
+	}
+	.beerslide .beerslider-navigator .sliderButton {
+		width: 8%;
+		height: auto;
+		cursor: pointer;
+	}
+	.beerslider-content {
+		width: 100%;
+		top: -13%;
+		transform: unset;
+		text-align: center;
+	}
+	.beerslide {
+		padding-bottom: 100%;
+	}
+	.beerslider-content .slide {
+		top: 50%;
+	}
+	.beerslider-navigator .item {
+		font-size: 2.4rem;
+		line-height: 1.2;
+	}
+	.beerslider-navigator {
+		width: 40.333333%;
+		bottom: 7rem;
+	}
+}
+
+@include max(576px) {
+	.beerslider-content .beerslider-tt {
+		font-size: 2.4rem;
+	}
+	.beerslider-navigator .item {
+		font-size: 2rem;
+	}
+	.beerslider-navigator .sliderButton {
+		width: 2.4rem;
+		height: 2.4rem;
+	}
+	.beerslide {
+		padding-bottom: 100vh;
+	}
+	.beerslider-content {
+		top: 0;
+	}
+	.beerslider-navigator .item {
+		font-size: 2.4rem;
+	}
+	.beerslider-navigator {
+		width: 68%;
+		bottom: 3rem;
+	}
+}

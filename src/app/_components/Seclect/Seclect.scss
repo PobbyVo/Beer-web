@@ -1,0 +1,82 @@
+.basic-single {
+	z-index: 23232;
+}
+
+.footer {
+	.css-13cymwt-control,
+	.css-t3ipsp-control {
+		background-color: transparent;
+	}
+	.css-19bb58m {
+		// color: #fff2ca;
+		color: #ededed;
+		font-size: 1.6rem;
+		font-family: "Exo 2";
+	}
+	.css-1jqq78o-placeholder {
+		color: #616161;
+		font-size: 1.4rem;
+	}
+	.css-1dimb5e-singleValue {
+		color: #fff2ca;
+		font-size: 1.6rem;
+		font-weight: 600;
+	}
+	.css-13cymwt-control,
+	.css-t3ipsp-control {
+		border: unset !important;
+		border-bottom: 0.1rem solid #ebebeb !important;
+		color: #3a3a3a;
+		min-height: unset !important;
+		border-radius: unset;
+		// padding: 1.2rem 0 0rem;
+		box-shadow: unset !important;
+		font-size: 1.4rem;
+		cursor: pointer;
+		font-family: "Exo 2";
+	}
+	.css-1dimb5e-singleValue,
+	.css-19bb58m {
+		margin: 0 !important;
+		padding: 0 !important;
+		font-size: 1.4rem !important;
+		font-family: "Exo 2";
+	}
+
+	.css-hlgwow {
+		padding: 0;
+	}
+
+	.css-1xc3v61-indicatorContainer {
+		color: var(--updateColor);
+	}
+
+	.css-1nmdiq5-menu {
+		box-shadow: 0.1rem 0.1rem 1rem var(--updateColor) !important;
+		color: #3a3a3a;
+		box-shadow: unset;
+		font-size: 1.4rem;
+		margin-bottom: 0;
+		overflow: hidden;
+		font-family: "Exo 2";
+	}
+	.css-10wo9uf-option {
+		transition: 0.3s all linear;
+	}
+	.css-d7l1ni-option {
+		background: var(--updateColor);
+		color: #fff;
+	}
+
+	.css-tr4s17-option {
+		background: var(--updateColor);
+	}
+
+	.css-10wo9uf-option:active {
+		background-color: var(--updateColor) !important;
+	}
+
+	.css-qr46ko {
+		padding: 0;
+	}
+}

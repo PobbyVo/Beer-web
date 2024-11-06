@@ -1,0 +1,13 @@
+.videone{
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    background: #000;
+    display: flex;
+    .video{
+        width: 100%;
+        height: 100%;
+    }
+}

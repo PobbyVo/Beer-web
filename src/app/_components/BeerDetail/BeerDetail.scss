@@ -1,0 +1,198 @@
+@import "@/styles/core/mixin.scss";
+
+.beerdetail-wrap {
+	position: relative;
+	z-index: 2;
+}
+
+.beerdetail {
+	width: 100%;
+	height: calc(100vh + 200px);
+	background: rgba(255, 242, 202, 0.8);
+	backdrop-filter: blur(2px);
+	overflow: hidden;
+	position: sticky;
+	top: 0;
+	z-index: 20;
+}
+
+.beerdetail-content {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	padding-bottom: calc(100% * (976 / 1728));
+}
+
+.beerdetail-dlex {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 2.4rem;
+	width: 100%;
+	color: #541900;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.beerdetail-left {
+	width: 50%;
+	overflow: hidden;
+}
+
+.beerdetail-tt {
+	font-family: "UTM Aircona";
+	font-size: 10rem;
+	letter-spacing: -2px;
+	text-transform: uppercase;
+	line-height: 0.8;
+	margin-bottom: 2rem;
+}
+
+.beerdetail-desc {
+	font-family: "Exo 2";
+	font-size: 2.4rem;
+	font-weight: 600;
+	letter-spacing: -0.48px;
+}
+
+.beerdetail-right {
+	width: 50%;
+	overflow: hidden;
+
+	.content-detail {
+		font-family: "Exo 2";
+		font-size: 2rem;
+		font-weight: 500;
+		padding: 0 3.2rem;
+	}
+}
+
+.beerdetail-txt-mask {
+	position: relative;
+	transform-origin: top left;
+	will-change: transform;
+}
+
+.beerdetail-particle {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 3;
+	pointer-events: none;
+	img {
+		width: 100%;
+		object-fit: cover;
+	}
+}
+
+.beerdetail-moutain {
+	mix-blend-mode: multiply;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 0;
+	pointer-events: none;
+	img {
+		width: 100%;
+		object-fit: cover;
+	}
+}
+
+@include max(1727px) {
+	.beerdetail-tt {
+		font-size: 80px;
+	}
+}
+
+@include max(1200px) {
+	.beerdetail-dlex {
+		gap: 1.6rem;
+	}
+	.beerdetail-tt {
+		font-size: 64px;
+	}
+	.beerdetail-desc {
+		font-size: 2rem;
+	}
+	.beerdetail-right .content-detail {
+		font-size: 1.8rem;
+		padding: 0 2.4rem;
+	}
+	.beerdetail-particle {
+		width: 100%;
+		height: 120%;
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+	.beerdetail-moutain {
+		top: auto;
+		bottom: 0;
+		width: 100%;
+	}
+	.beerdetail-content {
+		transform: translateY(20vh);
+	}
+	.beerdetail {
+		height: calc(100vh + 100px);
+	}
+}
+
+@include max(900px) {
+	.beerdetail-dlex {
+		flex-direction: column;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+	.beerdetail-left {
+		width: 100%;
+	}
+	.beerdetail-right {
+		width: 100%;
+	}
+	.beerdetail-right .content-detail {
+		padding: 0;
+	}
+}
+
+@include max(768px) {
+	.beerdetail-tt {
+		font-size: 5.6rem;
+	}
+}
+@include max(700px) {
+	.beerdetail-content {
+		padding-bottom: calc(100% * (2500 / 1728));
+	}
+}
+@include max(576px) {
+	.beerdetail-tt {
+		font-size: 4.4rem;
+	}
+	.beerdetail-desc {
+		font-size: 1.8rem;
+	}
+	.beerdetail-right .content-detail {
+		font-size: 1.6rem;
+	}
+	.beerdetail-content {
+		transform: translateY(10rem);
+	}
+	.beerdetail-tt {
+		font-size: 2.4rem;
+	}
+	.beerdetail-desc {
+		font-size: 1.6rem;
+	}
+	.beerdetail-right .content-detail {
+		font-size: 1.4rem;
+	}
+}

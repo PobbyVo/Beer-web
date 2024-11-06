@@ -1,0 +1,50 @@
+.videotwo {
+    position: relative;
+    width: 100%;
+    padding-bottom: calc(100% * (1117/1728));
+    z-index: 20;
+    overflow: hidden;
+    .video.--cover {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .video__player {
+        left: 0;
+        overflow: hidden;
+        pointer-events: none;
+        top: 0;
+        will-change: transform;
+        display: grid;
+        height: 100%;
+        margin: 0 auto;
+        place-items: center;
+        position: absolute;
+        width: 100%;
+        // parallax
+    }
+
+    .video.--cover .video__player video {
+        height: 100%;
+        left: 50%;
+        object-fit: cover;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        z-index: 0;
+    }
+}
+
+// @media only screen and (max-width: 1200px) {
+//     .videotwo {
+//         height: 80vw;
+//         min-height: 80vw;
+//     }
+// }

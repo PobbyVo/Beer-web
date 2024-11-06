@@ -1,0 +1,923 @@
+@import "@/styles/core/mixin.scss";
+
+@keyframes expandAndDisappear {
+	0% {
+		width: 0;
+		height: 0;
+		opacity: 0.05;
+	}
+
+	50% {
+		width: 200vw;
+		height: 200vw;
+		opacity: 1;
+	}
+
+	100% {
+		width: 300vw;
+		height: 300vw;
+		opacity: 0;
+	}
+}
+
+@keyframes aniRotate {
+	0% {
+		transform: translate(-50%, -50%) rotate(0);
+	}
+	100% {
+		transform: translate(-50%, -50%) rotate(180deg);
+	}
+}
+
+.canWrapper-col {
+	position: relative;
+	z-index: 1;
+}
+
+.innerAnim {
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.scaleAnim {
+	height: 0;
+	width: 0;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translate3d(-50%, -50%, 0);
+	-moz-transform: translate3d(-50%, -50%, 0);
+	-o-transform: translate3d(-50%, -50%, 0);
+	-ms-transform: translate3d(-50%, -50%, 0);
+	transform: translate3d(-50%, -50%, 0);
+	transform-origin: center center;
+	z-index: -1;
+
+	&.active {
+		&.first {
+			animation: expandAndDisappear 2.5s ease-in-out;
+		}
+
+		&.second {
+			animation: expandAndDisappear 2.5s ease-in-out;
+			animation-delay: 0.14s;
+		}
+	}
+
+	&.first {
+		.scaleAnim-svg circle {
+			fill: #0c0b05c8;
+		}
+	}
+
+	&.second {
+		z-index: 1;
+
+		.scaleAnim-svg circle {
+			fill: #0c0b05d8;
+		}
+	}
+
+	svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.beerinfo {
+	position: relative;
+	z-index: 1;
+	font-family: "UTM Aircona";
+	padding: 120px 0 0px;
+
+	.txt-main {
+		color: var(--updateColor);
+	}
+
+	.slide {
+		position: absolute;
+		top: 30%;
+		left: 0;
+		width: 100%;
+		pointer-events: none;
+		opacity: 0;
+		transition: margin-left 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1),
+			opacity 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1), pointer-events 0.3s 0s;
+
+		&.active {
+			opacity: 1;
+			margin-left: 0;
+			pointer-events: inherit;
+
+			&.next {
+				margin-left: -2vw;
+				opacity: 0;
+				pointer-events: none;
+				transition: margin-left 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1),
+					opacity 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1), pointer-events 0.3s 0s;
+			}
+
+			&.prev {
+				margin-left: 2vw;
+				opacity: 0;
+				pointer-events: none;
+				transition: margin-left 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1),
+					opacity 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1), pointer-events 0.3s 0s;
+			}
+		}
+
+		&.animNext {
+			opacity: 0;
+			pointer-events: none;
+			margin-left: 2vw;
+		}
+
+		&.animPrev {
+			opacity: 0;
+			pointer-events: none;
+			margin-left: -2vw;
+		}
+	}
+}
+
+.beerinfo-dotfly {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: -1;
+	overflow: hidden;
+}
+
+.beerinfo .beerInfoWrapper {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	margin-bottom: 3.2rem;
+}
+
+.beerinfo .beerInfoWrapper-item {
+	position: relative;
+}
+
+.beerinfo .beerIntroSlider {
+	position: relative;
+	margin-bottom: 94px;
+	padding: 32px 32px 0px 13px;
+	text-transform: uppercase;
+	line-height: 0.8;
+	padding-bottom: 55%;
+	overflow: hidden;
+	transform: translateY(50%);
+	transition: transform 0.5s ease-in-out;
+
+	.slide {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		text-align: right;
+	}
+
+	.smallTitle {
+		font-size: 32px;
+	}
+
+	.mediumTitle {
+		margin: 24px 0;
+		font-size: 80px;
+	}
+
+	.normalTitle {
+		font-size: 32px;
+	}
+}
+
+.beerinfo .beerIngredientsSlider {
+	position: relative;
+	padding: 0px 32px 32px 32px;
+	text-transform: uppercase;
+	padding-bottom: calc(100% * (178 / 386));
+	overflow: hidden;
+	// opacity: 0;
+	transform: translateY(50%);
+	transition: transform 0.5s ease-in-out;
+
+	.slide {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		text-align: right;
+	}
+
+	.tinyTitle {
+		margin-bottom: 24px;
+		font-size: 32px;
+		line-height: 0.8;
+	}
+
+	.normalTitle {
+		font-family: "Exo 2";
+		font-size: 24px;
+		font-weight: 600;
+	}
+}
+
+.beerinfo .beerInfoSlider {
+	position: relative;
+	opacity: 1;
+	padding: 32px 32px 0px 32px;
+	margin-bottom: 4.8rem;
+	text-transform: uppercase;
+	padding-bottom: 47%;
+	overflow: hidden;
+	transform: translateY(50%);
+	transition: transform 0.5s ease-in-out;
+
+	.slide {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+
+	.smallTitle {
+		font-size: 32px;
+		margin-bottom: 24px;
+	}
+
+	.text p {
+		font-family: "Exo 2";
+		font-size: 16px;
+		font-weight: 500;
+	}
+}
+
+.beerinfo .beerDetailsSlider {
+	position: relative;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 0 32px;
+	padding-bottom: calc(100% * ((249 + 76) / 386));
+	overflow: hidden;
+	// opacity: 0;
+	transform: translateY(50%);
+	transition: transform 0.5s ease-in-out;
+
+	.slide {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+
+	.cols {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: stretch;
+		width: 100%;
+	}
+
+	.cols:nth-child(1) {
+		.col {
+			&:nth-child(1) {
+				.normalTitle {
+					letter-spacing: -3.2px;
+				}
+			}
+		}
+	}
+
+	.cols:nth-child(2) {
+		margin-top: -0.2%;
+	}
+
+	.cols .col {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		justify-content: center;
+		align-items: center;
+		width: 50%;
+		padding: 20px 12px;
+		position: relative;
+		// border: 1px solid rgba(254, 196, 23, 0.3);
+	}
+
+	.cols .col:nth-child(2) {
+		padding-right: 0;
+		padding-left: 1.25vw;
+	}
+
+	.cols::before {
+		content: "";
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 50%;
+		// background: #0c0b05;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1;
+	}
+
+	.col::before {
+		content: "";
+		display: block;
+		position: absolute;
+		width: 50%;
+		height: 105%;
+		// background: #0c0b05;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1;
+	}
+
+	.tinyTitle,
+	.normalTitle {
+		position: relative;
+		z-index: 2;
+	}
+
+	.tinyTitle {
+		font-size: 16px;
+		letter-spacing: 0.8px;
+	}
+
+	.normalTitle {
+		font-size: 40px;
+		line-height: 32px;
+	}
+
+	.extraInfo {
+		font-size: 16px;
+		letter-spacing: 0.8px;
+		padding: 12px 0;
+		text-align: left;
+	}
+
+	.button {
+		margin-top: 48px;
+		border-radius: 12px;
+		border: 3px solid var(--updateColor);
+		background: none;
+		font-family: "UTM Aircona";
+		width: 100%;
+		transition: all 0.4s ease-in-out;
+		cursor: pointer;
+		&:hover {
+			border: 3px solid #fff2ca;
+			.txt {
+				transform: translate(0, -10%);
+				color: #fff2ca;
+			}
+		}
+
+		.txt {
+			display: block;
+			margin-top: -2%;
+			font-weight: 500;
+			color: var(--updateColor);
+			font-size: 24px;
+			padding: 24px;
+			transition: all 0.4s ease-in-out;
+		}
+	}
+}
+
+.beerinfo .canWrapper {
+	width: 100%;
+	padding-bottom: calc(100% * (755 / 480));
+	margin: 0 auto;
+	pointer-events: none;
+	position: relative;
+
+	// transform: translateY(-20%);
+	.animWrapper {
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+
+	.innerCanWrapper {
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+
+	.canInAnimation {
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		border-radius: 12px;
+		border: 2px solid var(--updateColor);
+		opacity: 0.6;
+		transition: opacity 0.6s, transform 0.6s;
+		transform: translateY(0);
+	}
+
+	.beerinfo-blur {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 150%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		img {
+			width: 100%;
+			height: 100%;
+			display: none;
+		}
+	}
+}
+
+.beerinfo .beerinfo-navigator {
+	color: var(--updateColor);
+	text-align: center;
+	width: calc(100% * (4 / 12));
+	margin: 0 auto;
+	position: relative;
+	z-index: 2;
+
+	.navigatorWrapper {
+		height: 4rem;
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1.6rem;
+		width: 100%;
+	}
+
+	.slideItems {
+		position: relative;
+		height: 4rem;
+		flex: 1;
+	}
+
+	.slide {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -63%);
+		pointer-events: none;
+		opacity: 0;
+		transition: margin-left 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1),
+			opacity 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1), pointer-events 0.3s 0s;
+		width: 100%;
+
+		&.active {
+			opacity: 1;
+			margin-left: 0;
+			pointer-events: inherit;
+
+			&.next {
+				margin-left: -4vw;
+				opacity: 0;
+				pointer-events: none;
+				transition: margin-left 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1),
+					opacity 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1), pointer-events 0.3s 0s;
+			}
+
+			&.prev {
+				margin-left: 4vw;
+				opacity: 0;
+				pointer-events: none;
+				transition: margin-left 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1),
+					opacity 0.3s 0s cubic-bezier(0.33, 1, 0.68, 1), pointer-events 0.3s 0s;
+			}
+		}
+
+		&.animNext {
+			opacity: 0;
+			pointer-events: none;
+			margin-left: 4vw;
+		}
+
+		&.animPrev {
+			opacity: 0;
+			pointer-events: none;
+			margin-left: -4vw;
+		}
+	}
+
+	.sliderButton {
+		height: 4rem;
+		width: 4rem;
+		cursor: pointer;
+
+		img {
+			display: none;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.item {
+		font-size: 3.6rem;
+		text-transform: uppercase;
+		line-height: 0.8;
+	}
+}
+
+.sliderButton-inner {
+	position: relative;
+	z-index: 1;
+	width: 4rem;
+	height: 4rem;
+	transition: all 0.3s ease-in-out;
+	overflow: hidden;
+
+	// background-color: aliceblue;
+	.sliderButton-inner-border {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transition: all 0.4s ease-in-out;
+
+		.inner {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+
+			mask-size: 100% 100%;
+			mask-repeat: no-repeat;
+			mask-position: center;
+
+			&::before {
+				content: "";
+				display: block;
+				width: 100%;
+				height: 100%;
+				// background-color: #8f8f8cc8;
+				background-color: var(--updateColor);
+			}
+			&::after {
+				content: "";
+				display: block;
+				width: 0%;
+				height: 100%;
+				background-color: #fff2ca;
+				z-index: 1;
+				position: absolute;
+				top: 0%;
+				transition: all 0.4s ease-in-out;
+			}
+		}
+	}
+
+	.sliderButton-inner-arrow {
+		position: absolute;
+		top: 50%;
+		width: 2.125rem;
+		height: 1.25rem;
+		transform: translate(0, -50%);
+		transition: all 0.4s ease-in-out;
+		.inner {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			mask-size: 100% 100%;
+			mask-repeat: no-repeat;
+			mask-position: center;
+
+			&::before {
+				content: "";
+				display: block;
+				width: 100%;
+				height: 100%;
+				// background-color: #8f8f8cc8;
+				background-color: var(--updateColor);
+			}
+			&::after {
+				content: "";
+				display: block;
+				width: 0%;
+				height: 100%;
+				background-color: #fff2ca;
+				z-index: 1;
+				position: absolute;
+				top: 0%;
+				right: 0%;
+				transition: all 0.4s ease-in-out;
+			}
+		}
+	}
+	&:hover {
+		&.left {
+			.sliderButton-inner-border {
+				.inner {
+					&::after {
+						width: 100%;
+						right: 0;
+						left: auto;
+					}
+				}
+			}
+			.sliderButton-inner-arrow {
+				.inner {
+					&::after {
+						width: 100%;
+						right: auto;
+						left: 0;
+					}
+				}
+				&.up {
+					transform: translate(-200%, -50%);
+				}
+				&.down {
+					transform: translate(0%, -50%);
+				}
+			}
+		}
+		&.right {
+			.sliderButton-inner-border {
+				.inner {
+					&::after {
+						width: 100%;
+						right: auto;
+						left: 0;
+					}
+				}
+			}
+			.sliderButton-inner-arrow {
+				.inner {
+					&::after {
+						width: 100%;
+						right: auto;
+						left: 0;
+					}
+				}
+				&.up {
+					transform: translate(200%, -50%);
+				}
+				&.down {
+					transform: translate(0%, -50%);
+				}
+			}
+		}
+	}
+
+	&.right {
+		.sliderButton-inner-border {
+			left: 0;
+
+			.inner {
+				-webkit-mask-image: url("/images/sliderButton-inner-border.png");
+				mask-image: url("/images/sliderButton-inner-border.png");
+				&::after {
+					right: 0;
+				}
+			}
+		}
+
+		.sliderButton-inner-arrow {
+			.inner {
+				-webkit-mask-image: url("/images/sliderButton-inner-arrow.png");
+				mask-image: url("/images/sliderButton-inner-arrow.png");
+			}
+			&.down {
+				transform: translate(-200%, -50%);
+			}
+		}
+	}
+
+	&.left {
+		.sliderButton-inner-border {
+			.inner {
+				-webkit-mask-image: url("/images/sliderButton-inner-border-left.png");
+				mask-image: url("/images/sliderButton-inner-border-left.png");
+				&::after {
+					right: 0;
+				}
+			}
+		}
+
+		.sliderButton-inner-arrow {
+			right: 0;
+
+			.inner {
+				-webkit-mask-image: url("/images/sliderButton-inner-arrow-left.png");
+				mask-image: url("/images/sliderButton-inner-arrow-left.png");
+			}
+			&.down {
+				transform: translate(200%, -50%);
+			}
+		}
+	}
+}
+
+@include max(1727px) {
+	.beerinfo {
+		.beerInfoSlider {
+			margin-bottom: 2.4rem;
+			padding-bottom: 50%;
+
+			.text p {
+				font-size: 1.4rem;
+			}
+
+			.smallTitle {
+				font-size: 2.8rem;
+			}
+
+			.normalTitle {
+				font-size: 2.8rem;
+			}
+		}
+
+		.beerIntroSlider {
+			.mediumTitle {
+				font-size: 6.8rem;
+			}
+
+			.normalTitle {
+				font-size: 2.8rem;
+			}
+		}
+
+		.beerIngredientsSlider {
+			.tinyTitle {
+				font-size: 2.8rem;
+			}
+
+			.normalTitle {
+				font-size: 2rem;
+			}
+		}
+
+		.beerDetailsSlider {
+			padding-bottom: 97%;
+
+			.button {
+				margin-top: 2.4rem;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.beerinfo {
+		padding: 0;
+	}
+
+	.beerinfo .beerIntroSlider {
+		opacity: 1;
+		transform: inherit;
+	}
+
+	.beerinfo .beerIntroSlider .mediumTitle {
+		font-size: 6.4rem;
+	}
+
+	.beerinfo .beerIntroSlider .smallTitle,
+	.beerinfo .beerIntroSlider .normalTitle,
+	.beerinfo .beerIngredientsSlider {
+		display: none;
+	}
+
+	.beerinfo .beerInfoWrapper {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		pointer-events: none;
+		height: 100vh;
+	}
+
+	.beerinfo .content-left-col {
+		width: 100%;
+	}
+
+	.beerinfo .canWrapper-col {
+		width: 70%;
+	}
+
+	.beerinfo .canWrapper {
+		padding-bottom: calc(100% * (600 / 480));
+	}
+
+	.beerinfo .content-right-col {
+		display: none;
+	}
+
+	.beerinfo .beerIntroSlider {
+		padding-bottom: 10%;
+	}
+
+	.beerinfo .beerIntroSlider .slide {
+		text-align: center;
+	}
+
+	.beerinfo .beerinfo-navigator .slideItems {
+		display: none;
+	}
+
+	.beerinfo .beerinfo-navigator {
+		position: absolute;
+		width: 90%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.beerinfo .beerinfo-navigator .sliderButton {
+		width: 8%;
+		height: auto;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.beerinfo .beerIntroSlider .mediumTitle {
+		font-size: 4rem;
+	}
+	.beerinfo .canWrapper .canInAnimation {
+		border: unset;
+	}
+	.sliderButton-inner {
+		width: 3rem;
+		height: 3rem;
+	}
+}
+
+@include max(1200px) {
+	.beerinfo {
+		.beerInfoWrapper {
+			margin-bottom: 0;
+			height: 85vh;
+		}
+
+		.canWrapper-col {
+			transform: translateY(0rem);
+		}
+
+		.beerinfo-navigator {
+			top: 60%;
+		}
+	}
+
+	.beerinfo-dotfly {
+		width: 150%;
+		top: 38%;
+		height: 120%;
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}
+
+@include max(576px) {
+	.beerinfo .canWrapper-col {
+		transform: translateY(0rem);
+		width: 94%;
+	}
+
+	.beerinfo .beerinfo-navigator {
+		top: 63%;
+		width: 100%;
+
+		.navigatorWrapper {
+			width: 88%;
+			margin: 0 auto;
+		}
+	}
+
+	// body.active-glb-pale-ale .beerinfo .canWrapper .canInAnimation {
+	// 	border: 1px solid #7e610b;
+	// }
+	// body.active-glb-ale-stout .beerinfo .canWrapper .canInAnimation {
+	// 	border: 1px solid #147700;
+	// }
+	// body.active-glb-belgian-white .beerinfo .canWrapper .canInAnimation {
+	// 	border: 1px solid #450c00;
+	// }
+	// body.active-glb-ipa .beerinfo .canWrapper .canInAnimation {
+	// 	border: 1px solid #00204a;
+	// }
+}

@@ -1,0 +1,65 @@
+// add class `container-lg` into body tag apply to container new
+.main {
+	position: relative;
+}
+.container {
+	position: relative;
+	width: 100%;
+	max-width: 146.4rem;
+	height: 100%;
+	margin: 0 auto;
+	padding: 0 3.2rem;
+	@media (min-width: 1921px) {
+		max-width: 158rem;
+	}
+	@media (max-width: 1727px) {
+		max-width: 126.4rem;
+	}
+	@media (max-width: 1200px) {
+		max-width: 100%;
+	}
+	@media (max-width: 576px) {
+		padding: 0 1.6rem;
+	}
+}
+
+// :root {
+// 	--background: #ffffff;
+// 	--foreground: #171717;
+// }
+
+// @media (prefers-color-scheme: dark) {
+// 	:root {
+// 		--background: #0a0a0a;
+// 		--foreground: #ededed;
+// 	}
+// }
+
+html {
+	font-size: 10px;
+}
+
+html,
+body {
+	max-width: 100vw;
+	/* overflow-x: hidden; */
+}
+
+// body {
+// 	color: var(--foreground);
+// 	background: var(--background);
+// 	font-family: "UTM Aircona";
+// 	-webkit-font-smoothing: antialiased;
+// 	-moz-osx-font-smoothing: grayscale;
+// 	background: #0c0b05;
+// }
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+// body.no-scroll {
+// 	overflow: hidden;
+// }
